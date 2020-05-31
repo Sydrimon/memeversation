@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .tracking import Tracking
+
 import json
 from pathlib import Path
 
@@ -27,7 +29,8 @@ class Memeversation:
     def find_word(self, text):
         for w in text.lower().split():
             if w in self.gif_data:
-                return self.gif_data[w]
+                return w, self.gif_data[w]
 
     def write_data_file(self):
         json.dump(self.gif_data, self.data_file.open('w'))
+
