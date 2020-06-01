@@ -25,8 +25,8 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Bischd du dumm?')
 
-def usage(update, context):
-    """send usage of requested word"""
+def usage_words(update, context):
+    """send usage of requested words"""
     msg = []
     for word in context.args:
         used = "{0} was used {1} times".format(word, stats.evaluate_word(word))
@@ -34,9 +34,15 @@ def usage(update, context):
     if msg:
         update.message.reply_text("\n".join(msg))
 
+def usage(update, context):
+    """send usage of requested phrase"""
+    phrase = " ".join(context.args)
+    used = "{0} was used {1} times".format(phrase, stats.evaluate_word(phrase))
+    update.message.reply_text(used)
+
 def read(update, context):
     m.update_gif_data()
-    word, media = m.find_word(update.message.text)
+    word, media = m.get_gif(update.message.text)
     if media:
         update.message.reply_animation(media)
 
