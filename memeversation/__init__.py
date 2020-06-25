@@ -36,14 +36,16 @@ class Memeversation:
                 return word, self.gif_data[word]
 
     def create_word_list(self, text):
-        phrases = text.lower().split()
-        for i, word in enumerate(text.lower().split()):
-            if i < len(phrases) - 1:
-                new = " ".join(phrases[i:i+1])
-                phrases.append(new)
-                if i < len(phrases) - 2:
-                    new = " ".join(phrases[i:i+2])
+        words = text.lower().split()
+        phrases = []
+        for i, word in enumerate(words):
+            if i < len(words) - 1:
+                if i < len(words) - 2:
+                    new = " ".join(words[i:i+3])
                     phrases.append(new)
+                new = " ".join(words[i:i+2])
+                phrases.append(new)
+        phrases.extend(words)
         return phrases
 
     def get_gif(self, text):
