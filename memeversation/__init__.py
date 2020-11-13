@@ -28,7 +28,7 @@ class Memeversation:
             self.last_modified = self.data_file.stat().st_mtime
 
     def write_data_file(self):
-        json.dump(self.gif_data, self.data_file.open('w'))
+        json.dump(self.gif_data, self.data_file.open('w'), indent = 2)
 
     def find_word(self, text):
         for word in text.split():
