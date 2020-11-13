@@ -31,12 +31,12 @@ class Memeversation:
         json.dump(self.gif_data, self.data_file.open('w'))
 
     def find_word(self, text):
-        for word in text.lower().split():
+        for word in text.split():
             if word in self.gif_data:
                 return word, self.gif_data[word]
 
     def create_word_list(self, text):
-        words = text.lower().split()
+        words = text.split()
         phrases = []
         for i, word in enumerate(words):
             if i < len(words) - 1:

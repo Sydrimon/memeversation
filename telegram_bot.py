@@ -36,13 +36,13 @@ def usage_words(update, context):
 
 def usage(update, context):
     """send usage of requested phrase"""
-    phrase = " ".join(context.args)
+    phrase = " ".join(context.args).lower()
     used = "{0} was used {1} times".format(phrase, stats.evaluate_word(phrase))
     update.message.reply_text(used)
 
 def read(update, context):
     m.update_gif_data()
-    word, media = m.get_gif(update.message.text)
+    word, media = m.get_gif(update.message.text.lower())
     if media:
         update.message.reply_animation(media)
 
