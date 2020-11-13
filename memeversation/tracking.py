@@ -57,6 +57,7 @@ class Tracking:
         self.__cache_counter += 1
         if self.__cache_counter >= self.__cache_size:
             self.__write_data()    
+            self.__cache_counter = 0
 
     def __update_user(self, user):
         """update user count"""
