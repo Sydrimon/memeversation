@@ -24,15 +24,6 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Bischd du dumm?')
 
-def usage_words(update, context):
-    """send usage of requested words"""
-    msg = []
-    for word in context.args:
-        used = "{0} was used {1} times".format(word, stats.evaluate_word(word))
-        msg.append(used)
-    if msg:
-        update.message.reply_text("\n".join(msg))
-
 def usage(update, context):
     """send usage of requested phrase"""
     phrase = " ".join(context.args).lower()
