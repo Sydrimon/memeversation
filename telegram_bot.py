@@ -13,7 +13,6 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, JobQu
 m = Memeversation()
 stats = Tracking()
 
-# logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -55,21 +54,17 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def main():
-    # init
     updater = Updater("", use_context=True)
     dp = updater.dispatcher
 
-    # commands
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("hilfe", help))
     dp.add_handler(CommandHandler("nutzung", usage))
 
     dp.add_handler(MessageHandler(Filters.text, read))
 
-    # logging
     dp.add_error_handler(error)
 
-    # start
     updater.start_polling()
     updater.idle()
 
