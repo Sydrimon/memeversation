@@ -50,7 +50,8 @@ class Memeversation:
 
     def get_gif(self, text):
         phrases = self.create_word_list(text)
-        for p in phrases:
-            if p in self.gif_data:
-                return p, self.gif_data[p]
+        for phrase in phrases:
+            if phrase in self.gif_data:
+                return phrase, self.gif_data[phrase]
+        return "", ""
 
